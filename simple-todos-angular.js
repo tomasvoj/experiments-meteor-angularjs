@@ -53,7 +53,10 @@ if (Meteor.isClient) {
       $meteor.call('deleteTask', task._id);
     };
 
-    $scope.setChecked = function (task) {
+    $scope.setChecked = function (task, event) {
+      if(event.target instanceof HTMLAnchorElement){
+        return event.stopPropagation();
+      };
       $meteor.call('setChecked', task._id, !task.checked);
     };
 
@@ -77,7 +80,6 @@ if (Meteor.isClient) {
         require: 'ngModel',
         replace: true,
         scope: {
-            props: '=parseUrl',
             ngModel: '=ngModel'
         },
         link: function compile(scope, element, attrs, controller) {

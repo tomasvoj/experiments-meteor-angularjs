@@ -28,8 +28,8 @@
 
   <md-list>
     <md-list-item ng-repeat="task in tasks">
-      <md-checkbox ng-checked="task.checked" ng-click="setChecked(task)"></md-checkbox>
-      <p parse-url="props" ng-model="task.text">{{task.text}}</p>
+      <md-checkbox ng-checked="task.checked" ng-click="setChecked(task, $event)"></md-checkbox>
+      <p ng-disabled="true" parse-url="" ng-model="task.text" ng-click="setChecked(task, $event)">{{task.text}}</p>
       <md-switch
               ng-if="task.owner === $root.currentUser._id"
               ng-model="task.private"
